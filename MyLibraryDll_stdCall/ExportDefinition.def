@@ -1,0 +1,5 @@
+LIBRARY MyLibraryDll_stdCall
+EXPORTS
+	sumTwo
+	deepLoopTest
+	testFun
