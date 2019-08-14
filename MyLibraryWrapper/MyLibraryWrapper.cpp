@@ -2,10 +2,13 @@
 
 #include "stdafx.h"
 #include "MyLibraryWrapper.h"
-#include "E:\\Sources\\dotNetLab\\ShareLibraryByWrapper\\MyLibrary\\mHeader.h"
-#include "E:\\Sources\\dotNetLab\\ShareLibraryByWrapper\\MyLibrary\\mBody.cpp"
+#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mHeader.h"
+#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mBody.cpp"
 
-
+/*
+	Project Type:
+		Visual C++  -> CLR -> Class Library		 
+*/
 MyLibraryWrapper::MyLib::MyLib(double x, double y) {
 	myClassInstance = new myClass(x, y);
 

@@ -1,8 +1,8 @@
 // MyLibraryWrapper.h
 
 #pragma once
-#include "E:\\Sources\\dotNetLab\\ShareLibraryByWrapper\\MyLibrary\\mHeader.h"
-#include "E:\\Sources\\dotNetLab\\ShareLibraryByWrapper\\MyLibrary\\mBody.cpp"
+#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mHeader.h"
+#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mBody.cpp"
 using namespace System;
 
 

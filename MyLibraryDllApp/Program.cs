@@ -8,21 +8,21 @@ using System.Runtime.InteropServices;
 namespace MyLibraryApp {
     class Program {
         /*
-        [DllImport("E:\\Sources\\dotNetLab\\ShareLibraryByPInvoke\\Debug\\MyLibraryDll.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("E:\\Sources\\dotNetLab\\NativeLibraryInterop\\MyLibraryDll\bin\\MyLibraryDll.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern double sumTwo(double varX, double varY);
 
-        [DllImport("E:\\Sources\\dotNetLab\\ShareLibraryByPInvoke\\Debug\\MyLibraryDll.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("E:\\Sources\\dotNetLab\\NativeLibraryInterop\\MyLibraryDll\bin\\MyLibraryDll.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int deepLoopTest(int loopCount);
         */
 
         ///stdCall Export
-        [DllImport("E:\\Sources\\dotNetLab\\ShareLibraryByPInvoke\\Debug\\MyLibraryDll_stdCall.dll")]
+        [DllImport("E:\\Sources\\dotNetLab\\NativeLibraryInterop\\MyLibraryDll_stdCall\\bin\\MyLibraryDll_stdCall.dll")]
         public static extern double sumTwo(double varX, double varY);
 
-        [DllImport("E:\\Sources\\dotNetLab\\ShareLibraryByPInvoke\\Debug\\MyLibraryDll_stdCall.dll")]
+        [DllImport("E:\\Sources\\dotNetLab\\NativeLibraryInterop\\MyLibraryDll_stdCall\\bin\\MyLibraryDll_stdCall.dll")]
         public static extern int deepLoopTest(int loopCount);
 
-        [DllImport("E:\\Sources\\dotNetLab\\ShareLibraryByPInvoke\\Debug\\MyLibraryDll_stdCall.dll")]
+        [DllImport("E:\\Sources\\dotNetLab\\NativeLibraryInterop\\MyLibraryDll_stdCall\\bin\\MyLibraryDll_stdCall.dll")]
         public static extern int testFun();
 
 
