@@ -21,6 +21,16 @@ namespace MyLibraryWrapperApp {
             Console.WriteLine($"Deeploop result: {dResult}");
             Console.WriteLine($"Deeploop end at {end}, TotalMiliSec: {(end - start).TotalMilliseconds} ");
 
+            var recStr = myLib.passString("Hello..");
+            Console.WriteLine($"Received String: {recStr}");
+
+            var recObjStr = myLib.passObject(new CustomObj {
+                FirstProp = 5,
+                SecondProp = 6,
+                ThirdProp = 7
+            });
+            Console.WriteLine($"Received ObjString: {recObjStr}");
+
             Console.ReadLine();
         }
     }

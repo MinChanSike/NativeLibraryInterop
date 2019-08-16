@@ -4,6 +4,7 @@
 #include "MyLibraryWrapper.h"
 #include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mHeader.h"
 #include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mBody.cpp"
+#include "Extensions.cpp"
 
 /*
 	Project Type:
@@ -20,4 +21,16 @@ double MyLibraryWrapper::MyLib::getSum() {
 
 int MyLibraryWrapper::MyLib::deepLoopTest(int loopCount) {
 	return myClassInstance->deepLoop(loopCount);
+}
+
+String ^ MyLibraryWrapper::MyLib::passString(String ^ strParam) {
+	std::string dStrParam;
+	Extensions::MarshalString(strParam, dStrParam);
+	dStrParam = dStrParam + " (Received)";
+	return Extensions::ConvertToSystemString(dStrParam);
+}
+
+String ^ MyLibraryWrapper::MyLib::passObject(CustomObj ^ objParam) {
+	String ^ objStr = objParam->FirstProp + ", " + objParam->SecondProp + ", " + objParam->ThirdProp + " (Received)";
+	return objStr;
 }

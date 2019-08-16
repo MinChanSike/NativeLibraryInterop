@@ -3,8 +3,9 @@
 #pragma once
 #include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mHeader.h"
 #include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mBody.cpp"
-using namespace System;
+#include "CustomObj.cpp"
 
+using namespace System;
 
 namespace MyLibraryWrapper {
 
@@ -14,6 +15,9 @@ namespace MyLibraryWrapper {
 		MyLib(double x, double y);
 		double getSum();
 		int deepLoopTest(int loopCount);
+		
+		String ^ passString(String^ strParam);
+		String ^ passObject(CustomObj ^ objParam);
 
 	private:
 		myClass* myClassInstance;
