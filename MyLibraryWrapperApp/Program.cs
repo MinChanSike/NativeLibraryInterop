@@ -11,6 +11,7 @@ namespace MyLibraryWrapperApp {
             Console.WriteLine("MyLibraryWrapperApp");
 
             var myLib = new MyLib(10, 20);
+            myLib.onMyEventHappen += MyLib_onMyEventHappen1;
             var sumResult = myLib.getSum();
             Console.WriteLine($"Sum result {sumResult}");
 
@@ -31,7 +32,14 @@ namespace MyLibraryWrapperApp {
             });
             Console.WriteLine($"Received ObjString: {recObjStr}");
 
+            
+
             Console.ReadLine();
         }
+
+        private static void MyLib_onMyEventHappen1(string words) {
+            Console.WriteLine($"My event happen: {words}");
+        }
+
     }
 }

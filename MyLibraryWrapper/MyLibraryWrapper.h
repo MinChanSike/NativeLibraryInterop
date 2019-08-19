@@ -18,6 +18,8 @@ namespace MyLibraryWrapper {
 		
 		String ^ passString(String^ strParam);
 		String ^ passObject(CustomObj ^ objParam);
+		delegate void myEventDelegate(String ^ words);
+		event myEventDelegate ^ onMyEventHappen;
 
 	private:
 		myClass* myClassInstance;
