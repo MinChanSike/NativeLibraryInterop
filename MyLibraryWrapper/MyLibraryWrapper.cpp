@@ -2,8 +2,8 @@
 
 #include "stdafx.h"
 #include "MyLibraryWrapper.h"
-#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mHeader.h"
-#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mBody.cpp"
+#include "mHeader.h"
+#include "mBody.cpp"
 #include "Extensions.cpp"
 
 /*

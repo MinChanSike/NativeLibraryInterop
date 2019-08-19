@@ -1,8 +1,8 @@
 // MyLibraryWrapper.h
 
 #pragma once
-#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mHeader.h"
-#include "E:\Sources\\dotNetLab\\NativeLibraryInterop\MyLibrary\\mBody.cpp"
+#include "mHeader.h"
+#include "mBody.cpp"
 #include "CustomObj.cpp"
 
 using namespace System;
