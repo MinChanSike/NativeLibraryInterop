@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyLibraryWrapperApp {
@@ -11,7 +12,8 @@ namespace MyLibraryWrapperApp {
             Console.WriteLine("MyLibraryWrapperApp");
 
             var myLib = new MyLib(10, 20);
-            myLib.onMyEventHappen += MyLib_onMyEventHappen1;
+            myLib.OnEventHappen += MyLib_OnEventHappen;
+
             var sumResult = myLib.getSum();
             Console.WriteLine($"Sum result {sumResult}");
 
@@ -32,13 +34,20 @@ namespace MyLibraryWrapperApp {
             });
             Console.WriteLine($"Received ObjString: {recObjStr}");
 
-            
+            SendPingPong(myLib);
 
             Console.ReadLine();
         }
 
-        private static void MyLib_onMyEventHappen1(string words) {
-            Console.WriteLine($"My event happen: {words}");
+        private static void MyLib_OnEventHappen(DotNetEventArg arg) {
+            Console.WriteLine($"OnNativeEventHappen -> {arg.ArgString}");            
+        }
+
+        private static void SendPingPong(MyLib lib) {
+            while (true) {
+                Thread.Sleep(1000);
+                lib.pokeNativeEvent("Ping from .net");
+            }
         }
 
     }

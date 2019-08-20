@@ -1,6 +1,8 @@
 // This is the main DLL file.
 
 #include "stdafx.h"
+#include <vcclr.h>//required for gcroot
+
 #include "MyLibraryWrapper.h"
 #include "mHeader.h"
 #include "mBody.cpp"
@@ -14,14 +16,23 @@ using namespace System;
 using namespace System::Timers;
 using namespace System::Threading;
 
+class NListenerImp : public INativeListener {
+public:
+	NListenerImp(gcroot<MyLibraryWrapper::MyLib ^> myLibObj) {
+		_myLibObj = myLibObj;
+	}
 
-void SysTick(Object^ state, ElapsedEventArgs^ e)
-{
+	virtual void OnEvent(const NativeEventArgs& args) {
+		_myLibObj->FireEvent(args);
+	}
+private:
+	gcroot<MyLibraryWrapper::MyLib ^> _myLibObj;
+};
+
+void SysTick(Object^ state, ElapsedEventArgs^ e) {
 	DateTime _current = System::DateTime::Now;
 	String^ dt_str = String::Format("NOW: @{0}.{1:000}", _current.ToLongTimeString(), _current.Millisecond);
-	Console::WriteLine(dt_str);	 
-
-	//MyLibraryWrapper::MyLib::onMyEventHappen("Hay..");
+	Console::WriteLine(dt_str);	
 }
 
 static void StartTimer() {
@@ -34,18 +45,26 @@ static void StartTimer() {
 }
 
 MyLibraryWrapper::MyLib::MyLib(double x, double y) {
-	myClassInstance = new myClass(x, y);
-	
+	_myNativeClass = new myClass(x, y);
+
+	_iEventListener = new NListenerImp(this);
+	_myNativeClass->registerListener(_iEventListener);
+
 	//StartTimer();
 }
 
 double MyLibraryWrapper::MyLib::getSum() {
-	onMyEventHappen("Hay, I send out from get sum method.");
-	return myClassInstance->sumX_Y();
+	return _myNativeClass->sumX_Y();
 }
 
 int MyLibraryWrapper::MyLib::deepLoopTest(int loopCount) {
-	return myClassInstance->deepLoop(loopCount);
+	return _myNativeClass->deepLoop(loopCount);
+}
+
+void MyLibraryWrapper::MyLib::pokeNativeEvent(String ^ msg) {
+	std::string dMsg;
+	Extensions::MarshalString(msg, dMsg);
+	_myNativeClass->pokeEvent(dMsg);
 }
 
 String ^ MyLibraryWrapper::MyLib::passString(String ^ strParam) {
@@ -59,3 +78,4 @@ String ^ MyLibraryWrapper::MyLib::passObject(CustomObj ^ objParam) {
 	String ^ objStr = objParam->FirstProp + ", " + objParam->SecondProp + ", " + objParam->ThirdProp + " (Received)";
 	return objStr;
 }
+

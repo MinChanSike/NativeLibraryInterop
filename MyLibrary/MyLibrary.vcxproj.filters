@@ -26,5 +26,11 @@
     <ClInclude Include="mHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="INativeListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeEventArgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

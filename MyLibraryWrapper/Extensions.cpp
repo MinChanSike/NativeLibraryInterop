@@ -25,7 +25,7 @@ namespace MyLibraryWrapper {
 			Marshal::FreeHGlobal(IntPtr((void*)chars));
 		}
 
-		static String ^ ConvertToSystemString(const string ntStr) {
+		static String ^ ConvertToSystemString(const string& ntStr) {
 			String ^ result = gcnew String(ntStr.c_str());
 			return result;
 		}

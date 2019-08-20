@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CustomObj.cpp" />
+    <ClCompile Include="DotNetEventArg.cpp" />
     <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="MyLibraryWrapper.cpp" />
     <ClCompile Include="Stdafx.cpp">
