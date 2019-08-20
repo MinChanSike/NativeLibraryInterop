@@ -21,6 +21,10 @@ namespace MyLibraryWrapper {
 		String ^ passObject(CustomObj ^ objParam);
 		delegate void DotNetEventHandler(DotNetEventArg^ arg);
 		event DotNetEventHandler^ OnEventHappen;
+		
+		//required to clean native objects
+		~MyLib();
+		!MyLib();
 
 	private:
 		myClass* _myNativeClass;

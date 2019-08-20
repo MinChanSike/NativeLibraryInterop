@@ -79,3 +79,13 @@ String ^ MyLibraryWrapper::MyLib::passObject(CustomObj ^ objParam) {
 	return objStr;
 }
 
+MyLibraryWrapper::MyLib::~MyLib() {
+	//call the non-deterministic destructor
+	this->!MyLib();
+}
+
+MyLibraryWrapper::MyLib::!MyLib() {
+	delete _myNativeClass;
+	delete _iEventListener;
+}
+
